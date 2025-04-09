@@ -126,7 +126,7 @@ This project is currently under proprietary license. All rights reserved.
 ## 📬 Contact
 
 For suggestions, support, or feature requests:  
-📧 **Email:** [you@example.com]
+📧 **Email:** [yashasviwankhade2004@example.com]
 
 ---
 
