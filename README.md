@@ -1,240 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Key Management System</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
-            color: #24292e;
-            max-width: 1012px;
-            margin: 0 auto;
-            padding: 32px;
-        }
-        h1, h2, h3 {
-            font-weight: 600;
-            margin-top: 24px;
-            margin-bottom: 16px;
-        }
-        h1 {
-            font-size: 2em;
-            padding-bottom: 0.3em;
-            border-bottom: 1px solid #eaecef;
-        }
-        h2 {
-            font-size: 1.5em;
-            padding-bottom: 0.3em;
-            border-bottom: 1px solid #eaecef;
-        }
-        h3 {
-            font-size: 1.25em;
-        }
-        code {
-            font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
-            background-color: rgba(27, 31, 35, 0.05);
-            border-radius: 3px;
-            padding: 0.2em 0.4em;
-            font-size: 85%;
-        }
-        ul {
-            padding-left: 2em;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        .diagram {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 16px;
-            margin: 20px 0;
-        }
-        .feature-card {
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            padding: 16px;
-            background-color: #f6f8fa;
-        }
-        .feature-card h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: #0366d6;
-        }
-        .architecture {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .architecture-layer {
-            width: 100%;
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #f6f8fa;
-            border-radius: 6px;
-            border: 1px solid #e1e4e8;
-        }
-        .screenshot {
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            margin: 20px 0;
-        }
-    </style>
-</head>
-<body>
-    <h1>Key Management System</h1>
-    <p>A comprehensive Java desktop application designed to manage and track keys for organizations, facilitating easy issuance, submission, and monitoring of keys.</p>
+# 🔐 Key Management System
 
-    <h2>Features</h2>
-    <div class="features-grid">
-        <div class="feature-card">
-            <h3>🔐 Secure Login</h3>
-            <p>Multi-layered authentication system to ensure that only authorized personnel can access the key management features.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🔑 Issue Keys</h3>
-            <p>Record and track key issuance with details of the recipient, timestamp, and key identifiers.</p>
-        </div>
-        <div class="feature-card">
-            <h3>↩️ Submit Keys</h3>
-            <p>Log key returns with automatic timestamp recording and availability status updates.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🔍 Check Availability</h3>
-            <p>Quickly verify which keys are currently available or in use with a simple interface.</p>
-        </div>
-        <div class="feature-card">
-            <h3>📊 Record History</h3>
-            <p>Maintain a comprehensive log of all key transactions for audit and tracking purposes.</p>
-        </div>
-        <div class="feature-card">
-            <h3>➕ Add New Keys</h3>
-            <p>Easily add new keys to the system with custom identifiers and descriptions.</p>
-        </div>
-    </div>
+A **Java-based desktop application** designed to streamline the issuance, submission, and tracking of physical keys. With a secure login system and intuitive Swing-based GUI, administrators can efficiently manage key inventory and monitor transaction history.
 
-    <h2>System Architecture</h2>
-    <div class="architecture">
-        <p>The application implements the Model-View-Controller (MVC) architectural pattern for clean separation of concerns:</p>
-        
-        <div class="architecture-layer">
-            <h3>🖥️ View Layer (Presentation)</h3>
-            <ul>
-                <li><code>Login.java</code> - The initial login interface</li>
-                <li><code>Key.java</code> - Main application window with tabbed interface</li>
-                <li><code>IssueKeyPanel.java</code> - Panel for issuing keys</li>
-                <li><code>SubmitKeyPanel.java</code> - Panel for submitting keys</li>
-                <li><code>CheckAvailabilityPanel.java</code> - Panel for checking key availability</li>
-                <li><code>RecordHistoryPanel.java</code> - Panel for viewing transaction history</li>
-                <li><code>NewKey.java</code> - Panel for adding new keys</li>
-                <li><code>Button_Style.java</code> - Utility for consistent UI styling</li>
-            </ul>
-        </div>
-        
-        <div class="architecture-layer">
-            <h3>🎮 Controller Layer (Business Logic)</h3>
-            <ul>
-                <li><code>IssueKeyController.java</code> - Handles key issuance logic</li>
-                <li><code>SubmitKeyController.java</code> - Manages key submission operations</li>
-                <li><code>CheckAvailabilityController.java</code> - Processes availability checks</li>
-                <li><code>RecordHistoryController.java</code> - Controls history display and refreshing</li>
-                <li><code>NewKeyController.java</code> - Manages adding new keys to the system</li>
-            </ul>
-        </div>
-        
-        <div class="architecture-layer">
-            <h3>📦 Model Layer (Data & Database)</h3>
-            <ul>
-                <li><code>DatabaseConnection.java</code> - Manages database connectivity</li>
-                <li>Database Tables:
-                    <ul>
-                        <li><code>login</code> - Authentication data</li>
-                        <li><code>details</code> - Key information</li>
-                        <li><code>status</code> - Current availability status</li>
-                        <li><code>history</code> - Transaction records</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+---
 
-    <div class="diagram">
-        <h3>System Flow Diagram</h3>
-        <img src="/api/placeholder/800/400" alt="Key Management System Flow Diagram">
-    </div>
+## ✨ Features
 
-    <h2>Database Schema</h2>
-    <p>The application uses the following database tables:</p>
-    <ul>
-        <li><strong>login</strong> - Stores user credentials for authentication</li>
-        <li><strong>details</strong> - Contains key information (ID, KeyName)</li>
-        <li><strong>status</strong> - Tracks key availability (ID, Availability)</li>
-        <li><strong>history</strong> - Records transactions (ID, KeyName, IssuedBy, IssueDate, IssueTime, SubmissionDate, SubmissionTime)</li>
-    </ul>
+- ✅ **Secure Login System**  
+  Multi-layered authentication ensures restricted access.
 
-    <h2>Technology Stack</h2>
-    <ul>
-        <li><strong>Programming Language:</strong> Java</li>
-        <li><strong>UI Framework:</strong> Java Swing</li>
-        <li><strong>Database:</strong> MySQL</li>
-        <li><strong>Database Connectivity:</strong> JDBC</li>
-    </ul>
+- 🔑 **Issue Keys**  
+  Track who has borrowed which key and when.
 
-    <h2>Installation & Setup</h2>
-    <ol>
-        <li>Clone the repository:
-            <code>git clone https://github.com/yourusername/key-management-system.git</code>
-        </li>
-        <li>Ensure you have Java Development Kit (JDK) installed</li>
-        <li>Install MySQL and create a database named <code>key_management</code></li>
-        <li>Run the SQL script in the <code>database</code> folder to create the necessary tables</li>
-        <li>Configure database connection in <code>src/DatabaseConnection.java</code> if needed</li>
-        <li>Compile and run the application:
-            <code>javac -d bin src/*.java</code><br>
-            <code>java -cp bin App</code>
-        </li>
-    </ol>
+- 🔁 **Submit Keys**  
+  Record key returns and update availability.
 
-    <h2>Usage</h2>
-    <ol>
-        <li>Launch the application and login with your credentials</li>
-        <li>Navigate through the tabs to access different functionalities</li>
-        <li>Issue keys by selecting the key ID, name, and entering recipient information</li>
-        <li>Submit keys by selecting the key details and confirming the return</li>
-        <li>Check key availability at any time</li>
-        <li>View complete transaction history with the Record History tab</li>
-        <li>Add new keys to the system when needed</li>
-    </ol>
+- 📋 **Check Availability**  
+  Instantly view which keys are currently in use or available.
 
-    <h2>Screenshots</h2>
-    <div class="screenshot">
-        <h3>Login Screen</h3>
-        <img src="/api/placeholder/800/450" alt="Login Screen">
-    </div>
-    <div class="screenshot">
-        <h3>Main Interface</h3>
-        <img src="/api/placeholder/800/450" alt="Main Interface">
-    </div>
+- 📜 **Record History**  
+  Maintain a complete transaction log with timestamps.
 
-    <h2>Contributing</h2>
-    <p>Contributions are welcome! Please feel free to submit a Pull Request.</p>
-    <ol>
-        <li>Fork the repository</li>
-        <li>Create your feature branch (<code>git checkout -b feature/amazing-feature</code>)</li>
-        <li>Commit your changes (<code>git commit -m 'Add some amazing feature'</code>)</li>
-        <li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
-        <li>Open a Pull Request</li>
-    </ol>
+- ➕ **Add New Keys**  
+  Easily add and categorize new keys into the system.
 
-    <h2>License</h2>
-    <p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
+---
 
-    <h2>Contact</h2>
-    <p>Project Link: <a href="https://github.com/yourusername/key-management-system">https://github.com/yourusername/key-management-system</a></p>
-</body>
-</html>
+## 🏗️ System Architecture
+
+This project follows the **Model-View-Controller (MVC)** architectural pattern for modularity and ease of maintenance.
+
+### 📦 Model
+- **Database Layer**: MySQL database to store key and user data.
+- **Entity Classes**: Represents core entities like `Key`, `User`, `Transaction`.
+- **Data Access Layer**: JDBC-based operations for all DB interactions.
+
+### 🎨 View
+- **GUI**: Java Swing components for all user interfaces.
+- **Panels**: Functional modules (issue, submit, history, etc.).
+- **Styling**: Consistent, user-friendly layout.
+
+### 🧠 Controller
+- **Action Handlers**: Respond to UI events and invoke appropriate logic.
+- **Business Logic**: Enforces issuance and return rules.
+- **Validation**: Checks inputs and secures data operations.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer       | Technology         |
+|-------------|--------------------|
+| Language    | Java               |
+| GUI         | Java Swing         |
+| DBMS        | MySQL              |
+| Connectivity| JDBC               |
+| Build       | Native Java Compile|
+
+---
+
+## 🧩 Database Schema
+
+The database includes the following tables:
+
+- `login`: Stores user authentication credentials
+- `details`: Contains metadata about each key
+- `status`: Tracks key availability
+- `history`: Logs all key issuance/return transactions
+
+---
+
+## 🚀 Installation & Setup
+
+1. ✅ Install Java Runtime Environment (JRE)
+2. ✅ Install MySQL Server
+3. ✅ Create a MySQL database named `key_management`
+4. ✅ Execute the provided SQL script to generate required tables
+5. 🔧 Configure DB settings in `DatabaseConnection.java`
+6. 🛠️ Compile `.java` files or run the provided `.jar`
+
+---
+
+## 📚 Usage Flow
+
+1. 🔐 **Login** – Authenticate using valid credentials
+2. 🔑 **Issue Key** – Select a key and log recipient information
+3. 🔁 **Submit Key** – Mark key as returned and update status
+4. 👁️ **Check Availability** – View current status of all keys
+5. 🕑 **View History** – Access complete audit trail
+6. ➕ **Add New Key** – Introduce new keys into the system
+
+---
+
+## 🛡️ Security Features
+
+- 🔒 Password-protected login system
+- 🔐 Encrypted DB connections
+- 🚫 SQL injection protection via input validation
+- 🕓 Session lifecycle management
+
+---
+
+## 📈 Future Enhancements
+
+- 📧 Email notifications for overdue keys
+- 📷 Barcode / QR code support for faster key scanning
+- 👥 Role-based access control for different staff levels
+- 📊 Advanced analytics and usage reports
+- 📱 Mobile app integration for remote access
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+
+---
+
+## 📄 License
+
+This project is currently under proprietary license. All rights reserved.
+
+---
+
+## 📬 Contact
+
+For suggestions, support, or feature requests:  
+📧 **Email:** [you@example.com]
+
+---
+
+🔨🤖🔧 Built with care using Java, Swing & MySQL.
